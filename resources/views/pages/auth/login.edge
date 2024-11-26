@@ -1,0 +1,27 @@
+@include('main')
+
+@pushTo('main')
+  <div>
+    <h1>login</h1>
+    <form action="{{ route('auth.login.store') }}" method="post">
+
+      @component('components/formfield', {
+        name: 'username',
+        label: 'Username',
+        type: 'text'
+      })
+      @end
+
+      @component('components/formfield', {
+        name: 'password',
+        label: 'Password',
+        type: 'password'
+      })
+      @end
+
+      {{ csrfField() }}
+
+      <input type="submit" value="submit">
+    </form>
+  </div>
+@end

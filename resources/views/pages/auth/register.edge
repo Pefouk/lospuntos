@@ -1,0 +1,34 @@
+@include('main')
+
+@pushTo('main')
+  <div>
+    <h1>register</h1>
+    <form action="{{ route('auth.register.store') }}" method="post">
+
+      @component('components/formfield', {
+        name: 'username',
+        label: 'Username',
+        type: 'text'
+      })
+      @end
+
+      @component('components/formfield', {
+        name: 'password',
+        label: 'Password',
+        type: 'password'
+      })
+      @end
+
+      @component('components/formfield', {
+        name: 'confirmPassword',
+        label: 'Confirm password',
+        type: 'password'
+      })
+      @end
+
+      {{ csrfField() }}
+
+      <input type="submit" value="submit">
+    </form>
+  </div>
+@end

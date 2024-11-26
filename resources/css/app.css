@@ -1,10 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-}
+@import url(var/var.css);
 
-html,
 body {
-  height: 100%;
-  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
 }

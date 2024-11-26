@@ -1,0 +1,10 @@
+<nav>
+  <a href="{{ route('home') }}"><span>LosPuntos.digital</span></a>
+  @if(auth.isAuthenticated)
+    <a href="{{ route('user.self') }}"><span>{{ auth.user.username }}</span></a>
+    <a href="{{ route('auth.logout') }}"><span>{{ t('auth.disconnect') }}</span></a>
+  @else
+    <a href="{{ route('user.self') }}"><span>{{ t('auth.login') }}</span></a>
+    <a href="{{ route('auth.logout') }}"><span>{{ t('auth.signup') }}</span></a>
+  @end
+</nav>
