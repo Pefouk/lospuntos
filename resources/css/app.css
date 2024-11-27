@@ -1,6 +1,7 @@
 @import url(var/var.css);
+@import url(component/components.css);
+@import url(view/view.css);
 
 body {
-  background-color: var(--black);
-  color: var(--white);
+  background-color: var(--bg);
 }

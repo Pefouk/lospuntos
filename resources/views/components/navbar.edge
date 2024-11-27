@@ -1,10 +1,12 @@
 <nav>
-  <a href="{{ route('home') }}"><span>LosPuntos.digital</span></a>
+  <h2><a href="{{ route('home') }}"><span>LosPuntos.digital</span></a></h2>
+  <ul>
   @if(auth.isAuthenticated)
-    <a href="{{ route('user.self') }}"><span>{{ auth.user.username }}</span></a>
-    <a href="{{ route('auth.logout') }}"><span>{{ t('auth.disconnect') }}</span></a>
+    <li><a href="{{ route('user.self') }}"><span>{{ auth.user.username }}</span></a></li>
+    <li><a href="{{ route('auth.logout') }}"><span>{{ t('auth.disconnect') }}</span></a></li>
   @else
-    <a href="{{ route('user.self') }}"><span>{{ t('auth.login') }}</span></a>
-    <a href="{{ route('auth.logout') }}"><span>{{ t('auth.signup') }}</span></a>
+    <li><a href="{{ route('auth.login.show') }}"><span>{{ t('auth.login') }}</span></a></li>
+    <li><a href="{{ route('auth.register.show') }}"><span>{{ t('auth.signup') }}</span></a></li>
   @end
+  </ul>
 </nav>

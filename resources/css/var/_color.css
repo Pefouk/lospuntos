@@ -1,4 +1,10 @@
 :root {
-  --black: #000;
-  --white: #fff;
+  color-scheme: dark only;
+  --bg: #1a1a1a;
+  --primary-500: #b6f981;
+  --primary-200: #c4f1a4;
+  --primary-800: #3ea51a;
+  --secondary-500: #607D8B;
+  --secondary-200: #b0bec5;
+  --secondary-800: #37474f;
 }
