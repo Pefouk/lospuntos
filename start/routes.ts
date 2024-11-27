@@ -1,11 +1,11 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
+import { HttpContext } from '@adonisjs/core/http'
 const LogoutController = () => import('#controllers/session/logout_controller')
 const LoginController = () => import('#controllers/session/login_controller')
 const RegisterController = () => import('#controllers/session/register_controller')
 const UsersController = () => import('#controllers/users_controller')
 const TokensController = () => import('#controllers/tokens_controller')
-const HomeController = () => import('#controllers/home_controller')
 
 // Auth Stuff
 router
@@ -18,6 +18,7 @@ router
 
     router.get('/logout', [LogoutController, 'index']).as('logout')
   })
+  .use(middleware.maintenance())
   .prefix('/auth')
   .as('auth')
 
@@ -39,5 +40,15 @@ router
   .prefix('/user')
   .as('user')
 
-// Home page
-router.get('/', [HomeController, 'index']).use(middleware.auth()).as('home')
+// 'Home' route redirect to login
+// Todo fix
+router
+  .get('/', ({ response }: HttpContext) => response.redirect().toRoute('auth.login.show'))
+  .as('home')
+
+// Maintenance mode
+router
+  .get('/maintenance', ({ view }: HttpContext) => {
+    return view.render('pages/errors/maintenance')
+  })
+  .as('maintenance')
