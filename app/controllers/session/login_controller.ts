@@ -11,10 +11,18 @@ export default class LoginController {
     return view.render('pages/auth/login')
   }
 
-  async store({ request, auth, response }: HttpContext) {
+  async store({ request, auth, response, session }: HttpContext) {
     const data = await request.validateUsing(LoginValidator)
-    const user = await User.verifyCredentials(data.username, data.password)
-    await auth.use('web').login(user)
-    return response.redirect().toRoute('user.self')
+    try {
+      const user = await User.verifyCredentials(data.username, data.password)
+      await auth.use('web').login(user)
+      return response.redirect().toRoute('user.self')
+    } catch (e) {
+      session.flash('login', {
+        type: 'error',
+        message: 'Invalid Credentials',
+      })
+      return response.redirect().toRoute('auth.login.show')
+    }
   }
 }

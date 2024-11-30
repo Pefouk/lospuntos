@@ -8,6 +8,8 @@ export default class extends BaseSchema {
       table.increments('id').primary()
       table.integer('claimed_by').unsigned().references('users.id')
       table.integer('target_to').unsigned().references('users.id')
+      table.string('code', 512).unique()
+      table.integer('value')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

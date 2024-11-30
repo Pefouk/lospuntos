@@ -1,10 +1,21 @@
 import { HttpContext } from '@adonisjs/core/http'
-import i18nManager from '@adonisjs/i18n/services/main'
+import Token from '#models/token'
 
 export default class UsersController {
-  self({ view }: HttpContext) {
-    const fr = i18nManager.locale('fr')
-    console.log(fr.t('auth.disconnect'))
-    return view.render('pages/user/self')
+  async self({ view, auth }: HttpContext) {
+    const userId = auth?.user?.id ?? 0
+    const tokens = await Token.query().where('target_to', userId)
+    const score = tokens.reduce((acc, token) => (acc += token.value), 0)
+
+    const all = await Token.all()
+
+    all.forEach((token) => {
+      console.log(token)
+    })
+
+    return view.render('pages/user/self', {
+      tokens: tokens,
+      score: score,
+    })
   }
 }

@@ -5,3 +5,15 @@
 body {
   background-color: var(--bg);
 }
+
+.notification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--danger);
+  color: var(--secondary-200);
+  margin: 2em 0;
+  max-width: 25vw;
+}

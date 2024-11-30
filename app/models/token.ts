@@ -10,11 +10,16 @@ export default class Token extends BaseModel {
   @column()
   declare value: number
 
+  @column()
+  declare code: string
+
+  @column()
   @hasOne(() => User)
   declare claimedBy: relations.HasOne<typeof User>
 
+  @column()
   @hasOne(() => User)
-  declare target: relations.HasOne<typeof User>
+  declare targetTo: relations.HasOne<typeof User>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

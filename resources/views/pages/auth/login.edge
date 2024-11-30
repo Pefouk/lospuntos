@@ -2,6 +2,13 @@
 
 @pushTo('main')
   <div class="auth-form">
+
+    @flashMessage('login')
+      <div class="notification {{ $message.type }}">
+        {{ $message.message }}
+      </div>
+    @end
+
     <h1>login</h1>
     <form action="{{ route('auth.login.store') }}" method="post">
 

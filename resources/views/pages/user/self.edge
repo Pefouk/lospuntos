@@ -1,5 +1,10 @@
 @include('main')
 
 @pushTo('main')
-<h1>Bienvenue a toi, {{ auth.user.username }}</h1>
+<h1>Salut {{ auth.user.username }}, {{ score }} puntos</h1>
+<ul>
+@each (token in tokens)
+  <li>{{token.code}} : {{ token.value }}, par {{token.claimedBy}} </li>
+@end
+</ul>
 @end
