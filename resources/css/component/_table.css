@@ -5,5 +5,9 @@
 
   thead {
     background-color: var(--secondary-800);
+
+    th {
+      padding: 5px;
+    }
   }
 }

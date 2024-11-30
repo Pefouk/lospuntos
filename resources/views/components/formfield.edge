@@ -1,4 +1,9 @@
 <div class="form--element">
   <label class="control-label" for="{{ name }}">{{ label }}</label>
-  <input class="form-field__text" type="{{ type }}" name="{{ name }}" id="{{ name }}">
+  <input class="form-field__text" type="{{ type }}" name="{{ name }}" id="{{ name }}" value="{{ old(name) || ''}}">
+  @inputError(name)
+    @each(message in $messages)
+      <span class="danger">{{ message }}</span>
+    @end
+  @end
 </div>

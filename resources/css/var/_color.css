@@ -1,10 +1,15 @@
 :root {
   color-scheme: dark only;
   --bg: #1a1a1a;
+
+  --font-white: #f8f8f8;
+  --font-dark: #1e1e1e;
+
   --primary-50: #f1fce9;
   --primary-200: #c4f1a4;
   --primary-500: #8add4d;
   --primary-800: #50a332;
+  --primary-900: #297f21;
 
   --secondary-50: #f4e9fb;
   --secondary-200: #f4e9fb;
@@ -21,4 +26,75 @@
   --warning: #FFEB3B;
   --info: #03A9F4;
   --success: #4CAF50;
+}
+
+.font-white {
+  color: var(--font-white);
+}
+
+.font-dark {
+  color: var(--font-dark);
+}
+
+.primary-50 {
+  color: var(--primary-50);
+}
+.primary-200 {
+  color: var(--primary-200);
+}
+.primary-500 {
+  color: var(--primary-500);
+}
+.primary-800 {
+  color: var(--primary-800);
+}
+.primary-900 {
+  color: var(--primary-900);
+}
+.secondary-50 {
+  color: var(--secondary-50);
+}
+.secondary-200 {
+  color: var(--secondary-200);
+}
+.secondary-500 {
+  color: var(--secondary-500);
+}
+.secondary-800 {
+  color: var(--secondary-800);
+}
+.gray-50 {
+  color: var(--gray-50);
+}
+.gray-200 {
+  color: var(--gray-200);
+}
+.gray-500 {
+  color: var(--gray-500);
+}
+.gray-800 {
+  color: var(--gray-800);
+}
+.gray-900 {
+  color: var(--gray-900);
+}
+.danger {
+  color: var(--danger);
+}
+.warning {
+  color: var(--warning);
+}
+.info {
+  color: var(--info);
+}
+.success {
+  color: var(--success);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-500);
+}
+
+a {
+  color: var(--secondary-50);
 }

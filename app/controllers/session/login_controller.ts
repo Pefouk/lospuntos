@@ -12,8 +12,11 @@ export default class LoginController {
   }
 
   async store({ request, auth, response, session }: HttpContext) {
+    // Validate form, will auto go back to form with errors if invalid
+    const data = await request.validateUsing(LoginValidator)
+
+    // look for the given user, if not found, will display an error message on the login page
     try {
-      const data = await request.validateUsing(LoginValidator)
       const user = await User.verifyCredentials(data.username, data.password)
       await auth.use('web').login(user)
       return response.redirect().toRoute('user.self')

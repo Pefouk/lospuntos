@@ -13,13 +13,14 @@ export const RegisterValidator = vine.compile(
           .sum('users.id as count')
           .where('users.username', '=', value)
           .firstOrFail()
-        return user.count === 0
+
+        return user.count === null
       }),
 
     name: vine.string().minLength(3).maxLength(512),
 
     password: vine.string().minLength(8),
 
-    confirmPassword: vine.string().minLength(8).sameAs('password'),
+    confirmPassword: vine.string().sameAs('password'),
   })
 )

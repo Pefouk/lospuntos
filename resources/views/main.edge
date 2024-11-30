@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>🐔LOS PUNTOS HERMANOS🐔 {{ title || '' }}</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/app.css') }}"/>
+  <link rel="favicon" href="{{ asset('ressources/img/favicon.png') }}">
 </head>
-<input hidden="yarienavoirici">
 <body>
   <header>
     @component('components/navbar')
@@ -20,7 +20,8 @@
       </div>
     @end
 
-  @stack('main')
+  <div class="wrapper">
+    @stack('main')
+  </div>
 </body>
-  <input hidden="vu que t'insiste : fan2easteregg">
 </html>

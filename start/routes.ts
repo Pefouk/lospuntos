@@ -42,9 +42,7 @@ router
 
 // 'Home' route redirect to login
 // Todo fix
-router
-  .get('/', ({ response }: HttpContext) => response.redirect().toRoute('auth.login.show'))
-  .as('home')
+router.get('/', [UsersController, 'leaderboard']).as('home').use(middleware.auth())
 
 // Maintenance mode
 router

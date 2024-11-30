@@ -5,3 +5,7 @@
 body {
   background-color: var(--bg);
 }
+
+.wrapper {
+  margin: 0 1rem;
+}

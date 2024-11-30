@@ -3,6 +3,7 @@ nav {
   justify-content: space-between;
   align-items: baseline;
   flex-direction: row;
+  margin: 0 20px;
 
   ul {
     list-style: none;
