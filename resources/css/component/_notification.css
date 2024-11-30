@@ -1,0 +1,20 @@
+
+.notification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  max-width: 25vw;
+}
+
+.notification-error {
+  background-color: var(--danger);
+  color: var(--gray-50);
+}
+
+.notification-success {
+  background-color: var(--success);
+  color: var(--gray-800);
+}

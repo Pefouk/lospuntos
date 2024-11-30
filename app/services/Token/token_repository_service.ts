@@ -53,7 +53,7 @@ export default class TokenRepository {
         .where('tokens.target_to', user.id)
         .firstOrFail()
 
-      return res.score
+      return res.score ?? 0
     } catch (e) {
       console.error(e)
       return null

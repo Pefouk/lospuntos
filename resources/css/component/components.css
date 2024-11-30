@@ -1,2 +1,13 @@
 @import url(_nav.css);
 @import url('_table.css');
+@import url('_form.css');
+@import url('_button.css');
+@import url('_notification.css');
+
+.sbinnala {
+  transition: 500ms ease-in-out;
+
+  &:hover {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+}

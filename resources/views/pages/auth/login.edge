@@ -2,33 +2,30 @@
 
 @pushTo('main')
   <div class="auth-form">
-
-    @flashMessage('login')
-      <div class="notification {{ $message.type }}">
-        {{ $message.message }}
-      </div>
-    @end
-
-    <h1>login</h1>
-    <form action="{{ route('auth.login.store') }}" method="post">
+    <h1>Connexion</h1>
+    @component('components/form', {
+      formAction: route('auth.login.store'),
+      formMethod: 'post',
+      formClass: ''
+    })
 
       @component('components/formfield', {
         name: 'username',
-        label: 'Username',
+        label: 'Pseudo',
         type: 'text'
       })
       @end
 
       @component('components/formfield', {
         name: 'password',
-        label: 'Password',
+        label: 'Mot de passe',
         type: 'password'
       })
       @end
 
       {{ csrfField() }}
 
-      <input type="submit" value="submit">
-    </form>
+      <input type="submit" value="Valider" class="btn btn-primary">
+    @end
   </div>
 @end

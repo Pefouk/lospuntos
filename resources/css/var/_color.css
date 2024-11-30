@@ -1,11 +1,24 @@
 :root {
   color-scheme: dark only;
   --bg: #1a1a1a;
-  --primary-500: #b6f981;
+  --primary-50: #f1fce9;
   --primary-200: #c4f1a4;
-  --primary-800: #3ea51a;
-  --secondary-500: #607D8B;
-  --secondary-200: #b0bec5;
-  --secondary-800: #37474f;
-  --danger: #772323
+  --primary-500: #8add4d;
+  --primary-800: #50a332;
+
+  --secondary-50: #f4e9fb;
+  --secondary-200: #f4e9fb;
+  --secondary-500: #a150dc;
+  --secondary-800: #6840c1;
+
+  --gray-50: #eceff1;
+  --gray-200: #b0bec5;
+  --gray-500: #607D8B;
+  --gray-800: #37474f;
+  --gray-900: #37474f;
+
+  --danger: #F44336;
+  --warning: #FFEB3B;
+  --info: #03A9F4;
+  --success: #4CAF50;
 }

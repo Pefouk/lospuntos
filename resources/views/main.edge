@@ -13,6 +13,13 @@
     @component('components/navbar')
     @end
   </header>
+
+    @flashMessage('notification')
+      <div class="notification notification-{{ $message.type }}">
+        {{ $message.message }}
+      </div>
+    @end
+
   @stack('main')
 </body>
   <input hidden="vu que t'insiste : fan2easteregg">

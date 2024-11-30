@@ -2,33 +2,44 @@
 
 @pushTo('main')
   <div class="auth-form">
-    <h1>register</h1>
-    <form action="{{ route('auth.register.store') }}" method="post">
+    <h1>Inscription</h1>
 
+    @component('components/form', {
+      formAction: route('auth.register.store'),
+      formMethod: 'post',
+      formClass: ''
+    })
       @component('components/formfield', {
         name: 'username',
-        label: 'Username',
+        label: 'Pseudo',
+        type: 'text'
+      })
+      @end
+
+      @component('components/formfield', {
+        name: 'name',
+        label: 'Prénom',
         type: 'text'
       })
       @end
 
       @component('components/formfield', {
         name: 'password',
-        label: 'Password',
+        label: 'Mot de passe',
         type: 'password'
       })
       @end
 
       @component('components/formfield', {
         name: 'confirmPassword',
-        label: 'Confirm password',
+        label: 'Confirmer le mot de passe',
         type: 'password'
       })
       @end
 
       {{ csrfField() }}
 
-      <input type="submit" value="submit">
-    </form>
+      <input type="submit" value="Valider" class="btn btn-primary">
+    @end
   </div>
 @end
