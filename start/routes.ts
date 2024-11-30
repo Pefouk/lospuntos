@@ -34,7 +34,7 @@ router
 // User stuff
 router
   .group(() => {
-    router.get('/me', [UsersController, 'self']).as('self')
+    router.get('/:userId', [UsersController, 'user']).as('self')
   })
   .use(middleware.auth())
   .prefix('/user')

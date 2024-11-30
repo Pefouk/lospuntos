@@ -1,21 +1,23 @@
 import { HttpContext } from '@adonisjs/core/http'
-import Token from '#models/token'
+import TokenRepository from '#services/Token/token_repository_service'
+import { inject } from '@adonisjs/core'
+import User from '#models/user'
 
 export default class UsersController {
-  async self({ view, auth }: HttpContext) {
-    const userId = auth?.user?.id ?? 0
-    const tokens = await Token.query().where('target_to', userId)
-    const score = tokens.reduce((acc, token) => (acc += token.value), 0)
+  async leaderboard() {
+    return 'todo'
+  }
 
-    const all = await Token.all()
+  @inject()
+  async user({ view, params }: HttpContext, tokenRepository: TokenRepository) {
+    const user = await User.findOrFail(params.userId)
+    const score = await tokenRepository.score(user)
+    const history = await tokenRepository.history(user)
 
-    all.forEach((token) => {
-      console.log(token)
-    })
-
-    return view.render('pages/user/self', {
-      tokens: tokens,
+    return view.render('pages/user/user', {
+      user: user,
       score: score,
+      history: history,
     })
   }
 }

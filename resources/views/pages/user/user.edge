@@ -1,0 +1,30 @@
+@include('main')
+
+@pushTo('main')
+<h1>{{ user.username }}</h1>
+<h2>{{score}} puntos</h2>
+
+<div>
+  <table class="table-history">
+    <thead class="table-history__header">
+      <tr>
+        <th>Auteur</th>
+        <th>Cible</th>
+        <th>Valeur</th>
+        <th>Code</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    @each (event in history)
+    <tr class="table-history__row ">
+      <td><a href="{{ route('user.self', {userId: event.fromId}) }}">{{ event.from }}</a></td>
+      <td><a href="{{ route('user.self', {userId: event.toId}) }}">{{ event.to }}</a></td>
+      <td>{{ event.value }}</td>
+      <td>{{ event.code }}</td>
+      <td>{{ i18n.formatDate(event.when) }}</td>
+    </tr>
+    @end
+  <caption>Historique</caption>
+  </table>
+</div>
+@end

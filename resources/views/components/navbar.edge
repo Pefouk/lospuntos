@@ -2,11 +2,11 @@
   <h2><a href="{{ route('home') }}"><span>LosPuntos.digital</span></a></h2>
   <ul>
   @if(auth.isAuthenticated)
-    <li><a href="{{ route('user.self') }}"><span>{{ auth.user.username }}</span></a></li>
-    <li><a href="{{ route('auth.logout') }}"><span>{{ t('auth.disconnect') }}</span></a></li>
+    <li><a href="{{ route('user.self', {userId: auth.user.id}) }}"><span>{{ auth.user.username }}</span></a></li>
+    <li><a href="{{ route('auth.logout') }}"><span>Déconnexion</span></a></li>
   @else
-    <li><a href="{{ route('auth.login.show') }}"><span>{{ t('auth.login') }}</span></a></li>
-    <li><a href="{{ route('auth.register.show') }}"><span>{{ t('auth.signup') }}</span></a></li>
+    <li><a href="{{ route('auth.login.show') }}"><span>Connexion</span></a></li>
+    <li><a href="{{ route('auth.register.show') }}"><span>Inscription</span></a></li>
   @end
   </ul>
 </nav>

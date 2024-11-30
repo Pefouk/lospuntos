@@ -6,7 +6,7 @@ export default class LoginController {
   async show({ view, auth, response }: HttpContext) {
     const userAuth = await auth.use('web').check()
     if (userAuth) {
-      return response.redirect().toRoute('user.self')
+      return response.redirect().toRoute('token.claim')
     }
     return view.render('pages/auth/login')
   }

@@ -9,5 +9,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p, span, a {
-  color: var(--primary-200);
+  color: var(--secondary-200);
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
 }
