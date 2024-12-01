@@ -5,17 +5,17 @@ export const TokenClaimValidator = vine.compile(
     code: vine
       .string()
       .minLength(4)
-      .unique(async (db, value) => {
+      .exists(async (db, value) => {
         const res = await db
           .query<{ count: number }>()
           .from('tokens')
           .sum('tokens.id', 'count')
           .where('tokens.code', '=', value)
-          .andWhere('tokens.claimed_by', '=', 'null')
+          .andWhereNull('tokens.claimed_by')
           .firstOrFail()
 
         console.log(res)
-        return res.count === null
+        return res.count !== null
       }),
 
     bonus: vine.enum(['bonus', 'malus']),
@@ -28,7 +28,6 @@ export const TokenClaimValidator = vine.compile(
         .where('users.id', '=', value)
         .firstOrFail()
 
-      console.log(res)
       return res.count !== null
     }),
   })

@@ -10,8 +10,10 @@
   padding: 0.5rem 0;
   border-radius: 8px;
   font-size: 16px;
-  background-color: var(--secondary-800);
-  color: var(--gray-50);
+}
+
+a.btn:hover {
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -21,5 +23,15 @@
 
   &:hover, &:focus {
     background-color: var(--primary-900);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--secondary-800);
+  color: var(--gray-50);
+  transition: ease-out 100ms;
+
+  &:hover, &:focus {
+    background-color: var(--secondary-900);
   }
 }

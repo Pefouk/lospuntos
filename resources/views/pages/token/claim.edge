@@ -3,30 +3,45 @@
 @pushTo('main')
 
 <div class="claim-form">
-  <h1>On claim du token ici ?</h1>
-
-  @component('components/form', {
+  <h1>On valide du token ici ?</h1>
+  @component('components/form/form', {
   formAction: route('token.claim.store'),
   formMethod: 'post',
   formClass: ''
   })
 
-    @component('components/formfield', {
+    @component('components/form/formTextField', {
       name: 'code',
       label: 'Token',
       type: 'text'
     })
     @end
 
-    <select name="bonus" id="bonus">
-      <option value="bonus">Bonus</option>
-      <option value="malus">Malus</option>
-    </select>
+    <div class="row">
+      @component('components/form/formRadioField', {
+        name: 'bonus',
+        label: 'Bonus',
+        value: 'bonus'
+      })
+      @end
 
-    @component('components/formfield', {
+      @component('components/form/formRadioField', {
+        name: 'bonus',
+        label: 'Malus',
+        value: 'malus'
+      })
+      @end
+    </div>
+
+    <div class="row">
+      <span class="w-100">entre 0 et 100 puntos pour la cible</span>
+      <span class="w-100">entre -200 et 50 puntos pour la cible</span>
+    </div>
+
+    @component('components/form/formSelectField', {
       name: 'target',
       label: 'Cible',
-      type: 'text'
+      options: options
     })
     @end
 

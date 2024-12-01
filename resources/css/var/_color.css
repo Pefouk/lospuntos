@@ -15,6 +15,7 @@
   --secondary-200: #f4e9fb;
   --secondary-500: #a150dc;
   --secondary-800: #6840c1;
+  --secondary-900: #4637af;
 
   --gray-50: #eceff1;
   --gray-200: #b0bec5;
@@ -62,6 +63,9 @@
 }
 .secondary-800 {
   color: var(--secondary-800);
+}
+.secondary-900 {
+  color: var(--secondary-900);
 }
 .gray-50 {
   color: var(--gray-50);

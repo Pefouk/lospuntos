@@ -9,3 +9,9 @@ body {
 .wrapper {
   margin: 0 1rem;
 }
+
+.row {
+  display: flex;
+  gap: 2px;
+  flex-direction: row;
+}

@@ -1,7 +1,6 @@
 import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
 import { Info } from 'luxon'
-import isValidIANAZone = Info.isValidIANAZone
 import Token from '#models/token'
 
 type TLeaderBoard = {
@@ -23,18 +22,14 @@ type THistory = [
 
 export default class TokenRepository {
   async claim(authorId: number, toId: number, value: number, code: string) {
-    const res = await Token.updateOrCreate(
-      {
-        code: code,
-      },
-      {
-        value: value,
-        targetTo: toId,
-        claimedBy: authorId,
-      }
-    )
-
-    return res
+    const token = await Token.findByOrFail({ code: code })
+    // @ts-ignore
+    token.targetTo = toId
+    // @ts-ignore
+    token.claimedBy = authorId
+    token.value = value
+    await token.save()
+    return token
   }
 
   async history(user: User) {
@@ -78,11 +73,13 @@ export default class TokenRepository {
       .orderBy('score', 'desc')
       .exec()
 
-    return res.map((user) => {
+    const nonNullLeaderboard = res.map((user) => {
       return {
         ...user,
         score: user.score ?? 0,
       }
     })
+
+    return nonNullLeaderboard.sort((a, b) => (a.score <= b.score ? 1 : -1))
   }
 }

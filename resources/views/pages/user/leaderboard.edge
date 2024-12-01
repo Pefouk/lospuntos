@@ -19,4 +19,10 @@
   <caption>Leaderboard</caption>
   </table>
 </div>
+
+<div class="row mt-3">
+  <a class="btn btn-secondary" href="{{ route('user.info', {userId: auth.user.id}) }}">Mon profil</a>
+  <a class="btn btn-primary" href="{{ route('token.claim.view') }}">Valider un token</a>
+</div>
+
 @end

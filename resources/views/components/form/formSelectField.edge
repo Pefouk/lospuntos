@@ -1,0 +1,13 @@
+<div class="form--element">
+  <label class="control-label" for="{{ name }}">{{ label }}</label>
+  <select class="form-field__select" name="{{ name }}" id="{{ name }}">
+    @each(option in options)
+      <option value="{{ option.value }}">{{ option.libelle }}</option>
+    @end
+  </select>
+  @inputError(name)
+    @each(message in $messages)
+      <span class="danger">{{ message }}</span>
+    @end
+  @end
+</div>

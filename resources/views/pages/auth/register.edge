@@ -4,33 +4,33 @@
   <div class="auth-form">
     <h1>Inscription</h1>
 
-    @component('components/form', {
+    @component('components/form/form', {
       formAction: route('auth.register.store'),
       formMethod: 'post',
       formClass: ''
     })
-      @component('components/formfield', {
+      @component('components/form/formTextField', {
         name: 'username',
         label: 'Pseudo',
         type: 'text'
       })
       @end
 
-      @component('components/formfield', {
+      @component('components/form/formTextField', {
         name: 'name',
         label: 'Prénom',
         type: 'text'
       })
       @end
 
-      @component('components/formfield', {
+      @component('components/form/formTextField', {
         name: 'password',
         label: 'Mot de passe',
         type: 'password'
       })
       @end
 
-      @component('components/formfield', {
+      @component('components/form/formTextField', {
         name: 'confirmPassword',
         label: 'Confirmer le mot de passe',
         type: 'password'
