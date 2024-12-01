@@ -26,7 +26,7 @@ export default class TokensController {
     const target = await User.findOrFail(data.target)
     const value = await tokenManager.claimToken(auth.getUserOrFail(), data)
 
-    await session.flash('notification', {
+    session.flash('notification', {
       type: 'success',
       message: `${value} puntos crédité a ${target.username}`,
     })

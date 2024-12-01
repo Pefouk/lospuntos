@@ -12,6 +12,5 @@ body {
 
 .row {
   display: flex;
-  gap: 2px;
   flex-direction: row;
 }

@@ -1,3 +1,9 @@
+.leaderboard {
+  width: 33vw;
+  min-width: 300px;
+  margin: auto;
+}
+
 .table-leaderboard {
   width: 100%;
   border: solid 1px var(--secondary-800);

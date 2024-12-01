@@ -13,8 +13,6 @@ export const TokenClaimValidator = vine.compile(
           .where('tokens.code', '=', value)
           .andWhereNull('tokens.claimed_by')
           .firstOrFail()
-
-        console.log(res)
         return res.count !== null
       }),
 
@@ -27,7 +25,6 @@ export const TokenClaimValidator = vine.compile(
         .sum('users.id', 'count')
         .where('users.id', '=', value)
         .firstOrFail()
-
       return res.count !== null
     }),
   })

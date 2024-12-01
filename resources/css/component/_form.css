@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   min-width: 300px;
-  gap: 1em;
+  gap: 1rem;
 
   .form--element {
     display: flex;
@@ -12,7 +12,19 @@
     gap: 6px;
 
     input {
-      height: 2em;
+      height: 2rem;
+      font-size: inherit;
+      background-color: var(--gray-800);
+      color: var(--font-white);
+      border: none;
+      border-radius: 8px;
+      padding: 6px 1rem;
+    }
+
+    select {
+      width: 100%;
+      min-height: 44px;
+      font-size: inherit;
       background-color: var(--gray-800);
       color: var(--font-white);
       border: none;

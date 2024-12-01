@@ -1,6 +1,6 @@
 <div class="form--element">
   <label class="control-label" for="{{ name }}">{{ label }}</label>
-  <input class="form-field__radio" type="radio" name="{{ name }}" id="{{ name }}" value="{{ value }}" checked>
+  <input class="form-field__radio" type="radio" name="{{ name }}" id="{{ name }}" value="{{ value }}">
   @inputError(name)
     @each(message in $messages)
       <span class="danger">{{ message }}</span>
