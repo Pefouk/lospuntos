@@ -1,6 +1,5 @@
 import db from '@adonisjs/lucid/services/db'
 import User from '#models/user'
-import { Info } from 'luxon'
 import Token from '#models/token'
 
 type TLeaderBoard = {

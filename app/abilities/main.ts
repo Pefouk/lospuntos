@@ -13,6 +13,7 @@
 */
 
 import { Bouncer } from '@adonisjs/bouncer'
+import User from '#models/user'
 
 /**
  * Delete the following ability to start from
