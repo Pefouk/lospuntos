@@ -12,12 +12,17 @@ export default class RegisterController {
     return view.render('pages/auth/register')
   }
 
-  async store({ request, auth, response }: HttpContext) {
+  async store({ request, auth, response, session }: HttpContext) {
     const data = await request.validateUsing(RegisterValidator)
     const user = await User.create({
       username: data.username,
       password: data.password,
       name: data.name,
+    })
+
+    session.flash('notification', {
+      type: 'success',
+      message: `Bienvenido mi amigo !`,
     })
 
     await auth.use('web').login(user)

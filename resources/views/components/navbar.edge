@@ -2,7 +2,10 @@
   <a href="{{ route('home') }}" class="sbinnala"><h2>LosPuntos.digital</h2></a>
   <ul>
   @if(auth.isAuthenticated)
-    <li><a href="{{ route('token.claim.view') }}"><span>Token</span></a></li>
+    @can('createToken')
+      <li><a href="{{ route('token.create.view') }}"><span>Nouveau token</span></a></li>
+    @end
+    <li><a href="{{ route('token.claim.view') }}"><span>Valider un token</span></a></li>
     <li><a href="{{ route('user.info', {userId: auth.user.id}) }}"><span>{{ auth.user.username }}</span></a></li>
     <li><a href="{{ route('auth.logout') }}"><span>Déconnexion</span></a></li>
   @else

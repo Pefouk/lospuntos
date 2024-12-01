@@ -6,10 +6,11 @@ import env from '#start/env'
  * Middleware to check that dev is ready
  */
 export default class ReadyMiddleware {
-  async handle(ctx: HttpContext, next: NextFn) {
-    if (env.get('MAINTENANCE') === 'false' || ctx.request.cookiesList().bypass === 'pefouk') {
+  async handle({ request, view, response }: HttpContext, next: NextFn) {
+    if (env.get('MAINTENANCE') === 'false' || request.cookiesList().bypass === 'pefouk') {
       return next()
     }
-    return ctx.response.redirect().toRoute('maintenance')
+    const res = await view.render('pages/errors/maintenance')
+    return response.send(res)
   }
 }

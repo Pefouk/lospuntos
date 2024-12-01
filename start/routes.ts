@@ -1,6 +1,6 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from '#start/kernel'
-import { HttpContext } from '@adonisjs/core/http'
+
 const LogoutController = () => import('#controllers/session/logout_controller')
 const LoginController = () => import('#controllers/session/login_controller')
 const RegisterController = () => import('#controllers/session/register_controller')
@@ -8,11 +8,7 @@ const UsersController = () => import('#controllers/users_controller')
 const TokensController = () => import('#controllers/tokens_controller')
 
 // Home page is the leaderboard
-router
-  .get('/', [UsersController, 'leaderboard'])
-  .as('home')
-  .use(middleware.auth())
-  .use(middleware.maintenance())
+router.get('/', [UsersController, 'leaderboard']).as('home').use(middleware.auth())
 
 // Auth Stuff
 router
@@ -25,18 +21,18 @@ router
 
     router.get('/logout', [LogoutController, 'index']).as('logout')
   })
-  .use(middleware.maintenance())
   .prefix('/auth')
   .as('auth')
 
 // Token Stuff
 router
   .group(() => {
-    router.get('/token/claim', [TokensController, 'claimView']).as('claim.view')
-    router.post('/token/claim', [TokensController, 'claimStore']).as('claim.store')
+    router.get('/claim', [TokensController, 'claimView']).as('claim.view')
+    router.post('/claim', [TokensController, 'claimStore']).as('claim.store')
+    router.get('/new', [TokensController, 'createView']).as('create.view')
+    router.post('/new', [TokensController, 'createStore']).as('create.store')
   })
   .use(middleware.auth())
-  .use(middleware.maintenance())
   .as('token')
   .prefix('/token')
 
@@ -46,13 +42,5 @@ router
     router.get('/:userId', [UsersController, 'user']).as('info')
   })
   .use(middleware.auth())
-  .use(middleware.maintenance())
   .prefix('/user')
   .as('user')
-
-// Maintenance mode
-router
-  .get('/maintenance', ({ view }: HttpContext) => {
-    return view.render('pages/errors/maintenance')
-  })
-  .as('maintenance')

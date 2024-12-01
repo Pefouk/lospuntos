@@ -1,10 +1,11 @@
 @include('main')
 
 @pushTo('main')
-<h1>{{ user.username }}</h1>
-<h2>{{score}} puntos</h2>
 
-<div>
+<div class="leaderboard">
+  <h1>{{ user.username }}</h1>
+  <h2>{{score}} puntos</h2>
+    @if(history.length > 0)
   <table class="table-history">
     <thead class="table-history__header">
       <tr>
@@ -15,16 +16,18 @@
         <th>Date</th>
       </tr>
     </thead>
-    @each (event in history)
-    <tr class="table-history__row ">
-      <td><a href="{{ route('user.info', {userId: event.fromId}) }}">{{ event.from }}</a></td>
-      <td><a href="{{ route('user.info', {userId: event.toId}) }}">{{ event.to }}</a></td>
-      <td>{{ event.value }}</td>
-      <td>{{ event.code }}</td>
-      <td>{{ i18n.formatDate(event.when) }}</td>
-    </tr>
-    @end
-  <caption>Historique</caption>
-  </table>
+      @each (event in history)
+      <tr class="table-history__row ">
+        <td><a href="{{ route('user.info', {userId: event.fromId}) }}">{{ event.from }}</a></td>
+        <td><a href="{{ route('user.info', {userId: event.toId}) }}">{{ event.to }}</a></td>
+        <td>{{ event.value }}</td>
+        <td>{{ event.code }}</td>
+        <td>{{ i18n.formatDate(event.when) }}</td>
+      </tr>
+      @end
+    </table>
+    @else
+      <span class="mt-3">Pas d'historique, loser</span>
+  @end
 </div>
 @end

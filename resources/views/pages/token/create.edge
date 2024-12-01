@@ -1,0 +1,30 @@
+@include('main')
+
+@pushTo('main')
+
+<div class="claim-form">
+  <h1>Nouveau token chef ?</h1>
+  @component('components/form/form', {
+  formAction: route('token.create.store'),
+  formMethod: 'post',
+  formClass: ''
+  })
+
+    @component('components/form/formTextField', {
+      name: 'code',
+      label: 'Token',
+      type: 'text'
+    })
+    @end
+
+    @component('components/form/formTextField', {
+      name: 'value',
+      label: 'Valeur (optionnel)',
+      type: 'number'
+    })
+    @end
+
+    <input type="submit" value="Valider" class="btn btn-primary">
+  @end
+</div>
+@end
