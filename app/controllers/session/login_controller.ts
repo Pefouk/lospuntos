@@ -5,8 +5,9 @@ import User from '#models/user'
 export default class LoginController {
   async show({ view, auth, response }: HttpContext) {
     const userAuth = await auth.use('web').check()
+    // User already logged ? redirect to home
     if (userAuth) {
-      return response.redirect().toRoute('token.claim')
+      return response.redirect().toRoute('home')
     }
     return view.render('pages/auth/login')
   }
@@ -19,9 +20,8 @@ export default class LoginController {
     try {
       const user = await User.verifyCredentials(data.username, data.password)
       await auth.use('web').login(user)
-      return response.redirect().toRoute('user.self')
+      return response.redirect().toRoute('home')
     } catch (e) {
-      console.log('waye')
       session.flash('notification', {
         type: 'error',
         message: 'Identifiants invalide',

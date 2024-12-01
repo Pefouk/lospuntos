@@ -1,0 +1,22 @@
+@include('main')
+
+@pushTo('main')
+<h1>Classement général</h1>
+<div>
+  <table class="table-leaderboard">
+    <thead>
+      <tr>
+        <th>Utilisateur</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    @each (user in leaderboard)
+    <tr class="table-history__row ">
+      <td><a href="{{ route('user.info', {userId: user.userId}) }}">{{ user.username }}</a></td>
+      <td>{{ user.score }}</td>
+    </tr>
+    @end
+  <caption>Leaderboard</caption>
+  </table>
+</div>
+@end

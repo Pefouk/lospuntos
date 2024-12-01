@@ -17,8 +17,8 @@
     </thead>
     @each (event in history)
     <tr class="table-history__row ">
-      <td><a href="{{ route('user.self', {userId: event.fromId}) }}">{{ event.from }}</a></td>
-      <td><a href="{{ route('user.self', {userId: event.toId}) }}">{{ event.to }}</a></td>
+      <td><a href="{{ route('user.info', {userId: event.fromId}) }}">{{ event.from }}</a></td>
+      <td><a href="{{ route('user.info', {userId: event.toId}) }}">{{ event.to }}</a></td>
       <td>{{ event.value }}</td>
       <td>{{ event.code }}</td>
       <td>{{ i18n.formatDate(event.when) }}</td>

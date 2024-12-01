@@ -4,8 +4,13 @@ import { inject } from '@adonisjs/core'
 import User from '#models/user'
 
 export default class UsersController {
-  async leaderboard() {
-    return 'todo'
+  @inject()
+  async leaderboard({ view }: HttpContext, tokenRepository: TokenRepository) {
+    const leaderboard = await tokenRepository.leaderBoard()
+
+    return view.render('pages/user/leaderboard', {
+      leaderboard: leaderboard,
+    })
   }
 
   @inject()

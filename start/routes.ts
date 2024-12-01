@@ -7,6 +7,13 @@ const RegisterController = () => import('#controllers/session/register_controlle
 const UsersController = () => import('#controllers/users_controller')
 const TokensController = () => import('#controllers/tokens_controller')
 
+// Home page is the leaderboard
+router
+  .get('/', [UsersController, 'leaderboard'])
+  .as('home')
+  .use(middleware.auth())
+  .use(middleware.maintenance())
+
 // Auth Stuff
 router
   .group(() => {
@@ -25,24 +32,23 @@ router
 // Token Stuff
 router
   .group(() => {
-    router.get('/token/claim', [TokensController, 'claim']).use(middleware.auth()).as('claim')
+    router.get('/token/claim', [TokensController, 'claimView']).as('claim.view')
+    router.post('/token/claim', [TokensController, 'claimStore']).as('claim.store')
   })
   .use(middleware.auth())
+  .use(middleware.maintenance())
   .as('token')
   .prefix('/token')
 
 // User stuff
 router
   .group(() => {
-    router.get('/:userId', [UsersController, 'user']).as('self')
+    router.get('/:userId', [UsersController, 'user']).as('info')
   })
   .use(middleware.auth())
+  .use(middleware.maintenance())
   .prefix('/user')
   .as('user')
-
-// 'Home' route redirect to login
-// Todo fix
-router.get('/', [UsersController, 'leaderboard']).as('home').use(middleware.auth())
 
 // Maintenance mode
 router

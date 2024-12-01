@@ -5,9 +5,18 @@
 @import url('_notification.css');
 
 .sbinnala {
-  transition: 500ms ease-in-out;
+  animation-duration: 2s;
+  animation-name: sbin;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
 
-  &:hover {
+@keyframes sbin {
+  from {
     transform: rotate3d(0, 1, 0, 180deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 0, 180deg);
   }
 }

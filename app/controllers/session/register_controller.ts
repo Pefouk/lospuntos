@@ -6,7 +6,7 @@ export default class RegisterController {
   async show({ view, auth, response }: HttpContext) {
     // Redirect the user if already logged in
     if (auth.isAuthenticated) {
-      return response.redirect().toRoute('user.self')
+      return response.redirect().toRoute('user.info')
     }
 
     return view.render('pages/auth/register')

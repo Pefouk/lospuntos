@@ -5,6 +5,14 @@ body {
   color: var(--font-white);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-500);
+}
+
+a {
+  color: var(--secondary-500);
+}
+
 a:hover, a:focus {
   text-decoration: underline;
 }

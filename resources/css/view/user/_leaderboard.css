@@ -1,0 +1,10 @@
+.table-leaderboard {
+  width: 100%;
+  border: solid 1px var(--secondary-800);
+  border-radius: 8px;
+  padding: 5px;
+
+  thead {
+    background-color: var(--secondary-800);
+  }
+}

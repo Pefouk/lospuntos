@@ -1,7 +1,36 @@
 @include('main')
 
 @pushTo('main')
-<h1>ça claim du token ici ?</h1>
 
-<form action="" method="post"></form>
+<div class="claim-form">
+  <h1>On claim du token ici ?</h1>
+
+  @component('components/form', {
+  formAction: route('token.claim.store'),
+  formMethod: 'post',
+  formClass: ''
+  })
+
+    @component('components/formfield', {
+      name: 'code',
+      label: 'Token',
+      type: 'text'
+    })
+    @end
+
+    <select name="bonus" id="bonus">
+      <option value="bonus">Bonus</option>
+      <option value="malus">Malus</option>
+    </select>
+
+    @component('components/formfield', {
+      name: 'target',
+      label: 'Cible',
+      type: 'text'
+    })
+    @end
+
+    <input type="submit" value="Valider" class="btn btn-primary">
+  @end
+</div>
 @end
